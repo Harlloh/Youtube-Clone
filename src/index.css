@@ -1,70 +1,92 @@
-*{
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-ul{
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(114, 113, 113);
+  border-radius: 10px;
+  height: 200px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.category-btn:hover {
+  background-color: #FC1503 !important;
+  color: white !important;
+}
+
+.category-btn:hover span {
+  color: white !important;
+}
+
+.react-player {
+  height: 77vh !important;
+  width: 100% !important;
+}
+
+.search-bar {
+  border: none;
+  outline: none;
+  width: 350px;
+}
+
+.category-btn {
+  font-weight: bold !important;
+  text-transform: capitalize;
   display: flex;
-}
-li{
-  list-style: none;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
 
-}
-li a{
-  color: white;
-  text-decoration: none;
-  padding: 0.52rem;
-}
-a.active{
-  /* font-size: 2rem; */
-  background-color: rgb(224, 13, 224);
-  transition: .1s ease-in-out ;
-}
-.careers > a{
-  background-color: rgb(84, 81, 81);
-  display: block;
-  margin: 1rem 0;
-  text-decoration: none;
-  padding: 2rem;
-  color: white;
-  /* width: 100vw; */
-  height: fit-content;
-}
-.careers > a:hover p{
-  color: red;
-}
-.careers > a p:last-child{
-  font-size: .8rem;
-  color: aliceblue;
-}
-.career-details{
-  background-color: rgba(230, 229, 229, 0.138);
-  padding: 2rem;
-  margin: 1rem;
-  border-radius: 5px;
-}
-.main-layout{
-  height: fit-content;
-  background-color: #000000;
-  padding-bottom: 3rem;
-}
-.breadcrumbs a{
-  color: white;
-}
-.breadcrumbs{
-  max-width: 1200px;
-  margin: 20px auto;
-}
-.breadcrumbs > *{
-  display: inline-block;
-  color: white;
-  margin-right: 10px;
-}
-.breadcrumbs .crumbs::after{
-  content: '>';
-  margin-left: 10px;
+  padding: 7px 15px;
+  margin: 10px 0px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
-.breadcrumbs .crumbs:last-child::after{
-  display: none;
+@media screen and (max-width: 900px) {
+  .category-btn {
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .copyright {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .scroll-horizontal {
+    overflow: auto !important;
+  }
+
+  .react-player {
+    height: 45vh !important;
+  }
+
+  .search-bar {
+    width: 200px;
+  }
+}
+.search-input:focus{
+  outline: none;
 }

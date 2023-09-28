@@ -1,71 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  createBrowserRouter,
   Route,
-  createRoutesFromElements,
   RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
 } from "react-router-dom";
-
-// LAYOUTS
-import Layout from "./layoutss/layout";
-import HelpLayout from "./layoutss/HelpLayout";
-
-// PAGES
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Faq from "./components/help/faq";
-import Contact, { contactAction } from "./components/help/Contact";
-import NotFound from "./components/NotFOund";
-import CareerLayout from "./layoutss/CareerLayout";
-import Careers, { CareerLoader } from "./components/careers/Careers";
-import CareerDetails, {
-  CareerDetailsLoader,
-} from "./components/careers/CareerDetails";
-import Postjob from "./layoutss/Postjob";
-import CareersError from "./components/careers/CareersError";
-import EditCareer from "./components/careers/EditCareer";
+import { CssBaseline, Switch, ThemeProvider, createTheme } from "@mui/material";
+import Layout from "./LAYOUT/RootLayout";
+import Feed from "./PAGES/Feed";
+import VideoDetail from "./PAGES/VideoDetail";
+import ChannelDetail from "./PAGES/ChannelDetail";
+import SearchFeed from "./PAGES/SearchFeed";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />}></Route>
-        <Route path="login" element={<Login />} />
-        {/* //help nested routes */}
-        <Route path="help" element={<HelpLayout />}>
-          <Route path="faq" element={<Faq />}></Route>
-          <Route
-            path="contact"
-            element={<Contact />}
-            action={contactAction}
-          ></Route>
+      <Route>
+        <Route path="/" element={<Layout />}>
+          <Route index exact element={<Feed />} />
+          <Route path="video/:id" exact element={<VideoDetail />} />
+          <Route path="channel/:id" exact element={<ChannelDetail />} />
+          <Route path="search/:searchTerm" exact element={<SearchFeed />} />
         </Route>
-
-        {/* Career layout routes */}
-        <Route
-          path="careers"
-          element={<CareerLayout />}
-          errorElement={<CareersError />}
-        >
-          <Route index element={<Careers />} loader={CareerLoader} />
-          <Route
-            loader={CareerDetailsLoader}
-            path=":id"
-            element={<CareerDetails />}
-          />
-          <Route path="editjob/:id" element={<EditCareer />} />
-        </Route>
-        <Route path="postjob" element={<Postjob />} />
-        {/* 404 route */}
-        <Route path="*" element={<NotFound />} />
       </Route>
     )
   );
-  return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
-  );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
