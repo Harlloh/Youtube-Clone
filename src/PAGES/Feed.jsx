@@ -7,7 +7,7 @@ import { fetchFromAPI } from "../utilis/fetchFromAPI";
 import { useEffect } from "react";
 
 export default function Feed({ selectedTheme }) {
-  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
